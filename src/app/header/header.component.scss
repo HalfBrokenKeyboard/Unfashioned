@@ -1,0 +1,39 @@
+header {
+  .container {
+    .d-flex {
+      align-items: center;
+
+      .align-items-center {
+        a {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          text-decoration: none;
+          color: white;
+
+          i {
+            margin-bottom: 0.5rem; // Adjust this value for vertical spacing
+          }
+        }
+      }
+    }
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+
+    i {
+      margin-bottom: 0.5rem; // Adjust this value for vertical spacing
+    }
+  }
+  h1 {
+    font-family: Georgia;
+  }
+}
