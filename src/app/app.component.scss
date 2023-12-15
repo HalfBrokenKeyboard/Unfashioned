@@ -5,3 +5,20 @@
 .img-hover:hover {
   transform: scale(1.1); /* Adjust the scaling factor as needed */
 }
+
+.centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed for your design */
+  overflow: hidden;
+  position: relative;
+}
+
+.centered-image img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.centered-image:hover img {
+  transform: scale(1.1); /* Adjust the scaling factor as desired */
+}
