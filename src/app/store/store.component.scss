@@ -1,0 +1,7 @@
+.img-hover {
+    transition: transform 0.3s ease; /* Add a default transition */
+  }
+  
+  .img-hover:hover {
+    transform: scale(1.1); /* Adjust the scaling factor as needed */
+  }

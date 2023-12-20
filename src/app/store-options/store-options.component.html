@@ -1,0 +1,33 @@
+<div class="row">
+    <!-- <div class="col-md-4">
+      <div class="form-group">
+        <label for="colorFilter">Color:</label>
+        <select class="form-control" id="colorFilter" (change)="selectedColor">
+          <option value="">All Colors</option>
+          <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="sizeFilter">Size:</label>
+        <select class="form-control" id="sizeFilter" (change)="selectedSize">
+          <option value="">All Sizes</option>
+          <option *ngFor="let size of sizes" [value]="size">{{ size }}</option>
+        </select>
+      </div>
+    </div> -->
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="sortFilter">Sort By:</label>
+        <select class="form-control" id="sortFilter" (change)="selectedSort">
+            <option value="priceLowToHigh">Newest</option>
+            <option value="priceLowToHigh">Popular</option>
+            <option value="priceLowToHigh">Price Low to High</option>
+            <option value="priceHighToLow">Price High to Low</option>
+          <!-- Add more sorting options as needed -->
+        </select>
+      </div>
+    </div>
