@@ -7,7 +7,7 @@ const printfulApiKey = 'YdqvnDu24hXQe5aHvp14e20TgSkcO4DkLVjN6AaM'; // replace wi
 export default async function handler(request: VercelRequest, response: VercelResponse) {
   try {
     const { data } = await axios.get(
-      'https://unfashioned.vercel.app/api/printful ',  // Replace this mock endpoint with your actual endpoint
+      'https://unfashioned.vercel.app/api/printful',  // Replace this mock endpoint with your actual endpoint
       {
         headers: {
           'Content-Type': 'application/json',

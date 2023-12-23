@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PrintfulService {
-  private apiUrl = 'http://localhost:3000/api/printful'; // Adjust this to match your Vercel function endpoint
+  private apiUrl = 'https://unfashioned.vercel.app/api/printful'; // Adjust this to match your Vercel function endpoint
 
   constructor(private http: HttpClient) {}
 
