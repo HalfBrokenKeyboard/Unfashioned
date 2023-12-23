@@ -1,38 +1,43 @@
-<header class="bg-dark text-white">
+<header class="bg-dark text-light">
   <div class="px-3 py-2 text-bg-dark border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <h1 href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"> UNFASHIONED</h1>
+    <div class="container d-flex flex-column align-items-center">
 
-        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-          <li>
-            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link text-white">Home</a>
-          </li>
-          <li>
-            <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link text-white">Store</a>
-          </li>
-          <li>
-            <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page"  href="#" class="nav-link text-white">Contact</a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">About</a>
-          </li>
-          <li>
-        </ul>
-
-
-        <div class="d-flex align-items-center">
-          <a href="#" class="text-white me-3">
-            <i class="bi bi-search"></i>
+      <!-- Centered and larger title -->
+      <h1 class="my-2 my-lg-0 mx-auto text-white text-decoration-none display-4">UNFASHIONED</h1>
+      
+      <!-- List and Icons -->
+      <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small d-flex align-items-center">
+        <li>
+          <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link text-white">Home</a>
+        </li>
+        <li>
+          <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link text-white">Store</a>
+        </li>
+        <!-- <li>
+          <a class="nav-link text-white">Story</a>
+        </li>  -->
+        <li>
+          <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" href="#" class="nav-link text-white">Contact</a>
+        </li>
+        
+        <!-- Icons to the left of nav -->
+        <li>
+          <a routerLink="" class="nav-link text-white me-3">
+            <i class="bi bi-heart-fill"></i>
           </a>
-          <a routerLink="/checkout" class="text-white me-3">
+        </li>
+        <li>
+          <a routerLink="/cart" class="nav-link text-white me-3">
             <i class="bi bi-bag-fill"></i>
           </a>
-          <a routerLink="/login" class="text-white">
+        </li>
+        <li>
+          <a routerLink="/login" class="nav-link text-white">
             <i class="bi bi-person-fill"></i>
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
+
     </div>
   </div>
 </header>

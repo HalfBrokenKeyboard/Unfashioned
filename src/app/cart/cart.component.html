@@ -1,0 +1,86 @@
+<!-- cart.component.html -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Add your cart items here -->
+            <!-- Example: -->
+            <h3 class="">Your selections</h3>
+            <hr class="item-divider">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/assets/Tshirt1.png" class="card-img-top" alt="Item Image">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="card-title">Item Name</h5>
+                    <p class="card-text">Item description</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="card-text">Price: $99.99</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-outline-dark">Edit</button>
+                        <button class="btn btn-outline-dark">Remove</button>
+                        <button class="btn btn-outline-dark">Save item</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="item-divider">
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ORDER SUMMARY</h5>
+                    <hr class="item-divider">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">Subtotal</p>
+                        <p class="card-text">$100</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">Shipping</p>
+                        <p class="card-text">KR 0 (DHL Express Worldwide)</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">Total</p>
+                        <p class="card-text">$100</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">VAT (Included)</p>
+                        <p class="card-text">$25</p>
+                    </div>
+                    
+                    <p><i>You will be charged only at the time of shipment except for DIY orders where the full amount is charged at the time of purchase.</i></p>
+                    <div class="d-grid gap-2">
+                        <button routerLink="/heckout" class="btn btn-dark btn-block">Checkout</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">MAY WE HELP?</h5>
+                    <p class="card-text">
+                        <i class="bi bi-geo-alt"></i> Address: Your Address
+                        <br>
+                        <i class="bi bi-telephone"></i> +45 0550622951
+                        <br>
+                        <i class="bi bi-envelope"></i> assistance@dk-onlineshopping.gucci.com
+                    </p>
+                    <hr class="item-divider">
+                    <h5 class="card-text">PAYMENT OPTIONS</h5>
+                    <p>None yet..</p>
+                    <hr class="item-divider">
+                    <h5 class="card-text">SHIPPING OPTIONS</h5>
+                    <p>
+                        DHL Express Worldwide KR 0 
+                        <br>
+                        DHL Ground KR 0
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

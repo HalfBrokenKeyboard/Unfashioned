@@ -1,28 +1,41 @@
+<!-- Your HTML form -->
 <div class="container">
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
       <div class="col-md-4">
-        <form>
-          <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
-    
-          <div class="form-floating mx-auto">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <br>
-          <div class="form-floating mx-auto">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-          </div>
-    
-          <div class="form-check text-start my-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Remember me
-            </label>
-          </div>
-          <button class="btn btn-dark w-100 py-2" type="submit">Sign in</button>
-          <p class="mt-5 mb-3 text-body-secondary text-center">© 2017–2023</p>
-        </form>
+          <form>
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                  <h1 class="fw-bold mb-0 fs-2">Please sign in</h1>
+                </div>
+          
+                <div class="modal-body p-5 pt-0">
+                  <form class="">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-dark" type="submit">Sign up</button>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-dark" type="submit">Sign in</button>
+                    <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+                    <hr class="my-4">
+                    <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                    <!-- Google Sign-In link with icon -->
+                    <a class="btn btn-outline-dark w-100 py-2 mb-2">
+                        <i class="bi bi-google"></i> Sign in with Google
+                    </a>
+                    <!-- Google Sign-In link with icon -->
+                    <a class="btn btn-outline-dark w-100 py-2 mb-2">
+                        <i class="bi bi-facebook"></i> Sign in with Facebook
+                    </a>
+                  </form>
+                </div>
+              </div>
+          </form>
       </div>
-    </div>
+      
   </div>
+</div>

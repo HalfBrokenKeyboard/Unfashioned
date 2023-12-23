@@ -15,6 +15,10 @@ import { LoginComponent } from './login/login.component';
 import { StoreOptionsComponent } from './store-options/store-options.component';
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PrintfulService } from './printful.service';
+import { CartComponent } from './cart/cart.component';
+import { AccountComponent } from './account/account.component';
+import { SavedComponent } from './saved/saved.component';
 
 
 @NgModule({
@@ -30,6 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     StoreOptionsComponent,
     ProductComponent,
+    CartComponent,
+    AccountComponent,
+    SavedComponent,
   ],
   imports: [
     HttpClientModule, 
@@ -37,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PrintfulService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
