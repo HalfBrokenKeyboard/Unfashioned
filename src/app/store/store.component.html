@@ -1,56 +1,24 @@
+<!-- app.component.html -->
+
 <app-store-options></app-store-options>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col" *ngFor="let product of products">
-        <div class="p-3 rounded">
-          <img src="assets/Tshirt1.png" class="img-fluid rounded img-hover">
-          <div class="p-3">
-            <h5 class="card-title text-center m-3">Oversized Tee</h5>
-            <div class="d-flex justify-content-center">
-              <div class="btn-group bg-dark">
-                <button type="button" class="btn btn-sm btn-outline-light">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="row row-cols-1 row-cols-md-3 g-4" #trigger>
+  <div class="col" *ngFor="let product of products">
+    <div class="p-3 rounded">
+      @defer (on viewport(trigger)) {
+        <img (click)="setSelectedProduct(product)" routerLink="/product" src="{{ product.thumbnail_url }}" class="img-fluid rounded img-hover">
+      }
+      @placeholder {
+        <div class="placeholder-image"></div>
+      }
       
-        <!-- <div class="col">
-          <div class="p-3 rounded">
-            <img src="assets/Tshirt1.png" class="img-fluid rounded img-hover">
-            <div class="p-3">
-              <h5 class="card-title text-center m-3">Oversized Tee</h5>
-              <div class="d-flex justify-content-center">
-                <div class="btn-group bg-dark">
-                  <button type="button" class="btn btn-sm btn-outline-light">Add to cart</button>
-                </div>
-              </div>
-            </div>
+      <div class="p-3">
+        <h5 class="card-title text-center m-3"> {{ product.name }}</h5>
+        <div class="d-flex justify-content-center">
+          <div class="btn-group bg-dark">
+            <button type="button" class="btn btn-sm btn-outline-light">Add to cart</button>
           </div>
         </div>
-        <div class="col">
-          <div class="p-3 rounded">
-            <img src="assets/Tshirt3.png" class="img-fluid rounded img-hover">
-            <div class="p-3">
-              <h5 class="card-title text-center m-3">Oversized Tee</h5>
-              <div class="d-flex justify-content-center">
-                <div class="btn-group bg-dark">
-                  <button type="button" class="btn btn-sm btn-outline-light">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3 rounded">
-            <img src="assets/Tshirt2.png" class="img-fluid rounded img-hover">
-            <div class="p-3">
-              <h5 class="card-title text-center m-3">Oversized Tee</h5>
-              <div class="d-flex justify-content-center">
-                <div class="btn-group bg-dark">
-                  <button type="button" class="btn btn-sm btn-outline-light">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </div> -->
       </div>
+    </div>
+  </div>
+</div>

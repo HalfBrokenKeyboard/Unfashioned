@@ -1,23 +1,77 @@
 <div class="container my-4">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="p-3 rounded">
-          <img src="assets/Tshirt1.png" class="img-fluid rounded img-hover" alt="T-shirt Image">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <h1 class="col-md-8">Title</h1>
-          <p class="col-md-4">$100</p>
-        </div>
-        <p>Subtitle</p>
-        
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci aliquid ea est explicabo excepturi minima velit porro, odit corporis dolorem fugiat quos dignissimos dicta recusandae iusto, nostrum possimus nobis nemo!</p>
-  
-        <div class="col-md-6">
-          <button class="btn btn-dark">Add to Cart</button>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="p-3 rounded">
+        <img src="{{ this.selectedProduct.thumbnail_url }}" class="img-fluid rounded img-hover" alt="T-shirt Image">
       </div>
     </div>
-  </div>
-  
+    <div class="col-md-6">
+      <div class="row">
+        <h1 class="col-md-8">{{ this.selectedProduct.name }}</h1>
+        <p class="col-md-4 text-end fs-4">$100</p>
+      </div>
+      <p class="fw-bold fs-5 mb-4">Subtitle</p>
+      
+      <p class="fs-6 mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci aliquid ea est explicabo excepturi minima velit porro, odit corporis dolorem fugiat quos dignissimos dicta recusandae iusto, nostrum possimus nobis nemo!</p>
+
+      <div class="col-md-12 mb-3">
+        <div class="dropdown">
+          <button class="btn btn-outline-dark dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Size
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-10 mb-3">
+            <button class="btn btn-dark btn-lg w-100">Add to Cart</button>
+          </div>
+          <!-- Favorite button with heart icon -->
+          <div class="col-md-2 mb-3">
+            <button class="btn btn-outline-dark btn-lg w-100"><i class="bi bi-heart"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-4 card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-truck fs-3 me-3"></i>
+            <span class="fw-bold">Free shippping</span>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-box2-fill fs-3 me-3"></i>
+            <span class="fw-bold">Secure Packaging</span>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-arrow-return-left fs-3 me-3"></i>
+            <span class="fw-bold">Easy Returns</span>
+          </li>
+        </ul>
+      </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-highlights fs-3 me-3"></i>
+            <span class="fw-bold">Fabric</span>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-info-circle-fill fs-3 me-3"></i>
+            <span class="fw-bold">Information</span>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <i class="bi bi-arrows-angle-expand fs-3 me-3"></i>
+            <span class="fw-bold">Fit</span>
+          </li>
+        </ul>
+      
+      </div>
+    </div>
+
+</div>

@@ -3,20 +3,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PrintfulService {
-  private apiUrl = 'https://unfashioned.vercel.app/api/printful'; // Adjust this to match your Vercel function endpoint
+  private apiUrl = environment.apiUrl; // Update to match your Vercel function endpoint
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/products`);
+    return this.http.get(this.apiUrl);
   }
 
-  placeOrder(orderPayload: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/placeOrder`, orderPayload);
+  getVariants(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}?endpoint=store/variants/${id}`);
   }
 }

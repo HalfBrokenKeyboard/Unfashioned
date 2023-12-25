@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { PrintfulService } from '../printful.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-store',
@@ -8,28 +10,37 @@ import { PrintfulService } from '../printful.service';
 })
 export class StoreComponent implements OnInit{
   products: any[];
+  selectedProduct: any; 
 
-  constructor(private printfulApiService: PrintfulService) {}
+  constructor(
+    private printfulService: PrintfulService, 
+    private cdr: ChangeDetectorRef,
+    private productService: ProductService) {}
   
   ngOnInit() {
-    this.getPrintfulProducts();
+    this.productService.currentProduct.subscribe(product => this.selectedProduct = product)
+    this.fetchPrintfulProducts();
   }
 
-  getPrintfulProducts() {
-    this.printfulApiService.getProducts().subscribe({
-      next: (response) => {
-        this.products = response.result; // Adjust based on your Printful response structure
-        console.log('Printful products:', this.products);
-        // Handle the list of products as needed
+  fetchPrintfulProducts(): void {
+    this.printfulService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data.result;
+  
+        this.updateView();
       },
       error: (error) => {
         console.error('Error fetching Printful products:', error);
-        // Handle the error as needed
-      },
-      complete: () => {
-        // Optional: Handle completion if needed
       },
     });
   }
+  
+  updateView() {
+    this.cdr.detectChanges();
+  }
 
+  setSelectedProduct(product) {
+    this.productService.setProduct(product);
+  }
+  
 }
