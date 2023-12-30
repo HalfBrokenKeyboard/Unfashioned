@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule} from "@angular/common";
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +20,7 @@ import { PrintfulService } from './printful.service';
 import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 import { SavedComponent } from './saved/saved.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { SavedComponent } from './saved/saved.component';
     HttpClientModule, 
     BrowserModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
   ],
   providers: [PrintfulService],
   bootstrap: [AppComponent]

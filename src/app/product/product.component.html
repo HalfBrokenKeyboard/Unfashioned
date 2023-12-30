@@ -2,28 +2,35 @@
   <div class="row">
     <div class="col-md-6">
       <div class="p-3 rounded">
-        <img src="{{ this.selectedProduct.thumbnail_url }}" class="img-fluid rounded img-hover" alt="T-shirt Image">
+        <img src="{{ selectedProduct.thumbnail_url }}" class="img-fluid rounded img-hover" alt="T-shirt Image">
       </div>
     </div>
     <div class="col-md-6">
       <div class="row">
-        <h1 class="col-md-8">{{ this.selectedProduct.name }}</h1>
-        <p class="col-md-4 text-end fs-4">$100</p>
+        <h1 class="col-md-8">{{ selectedProduct.name }}</h1>
+        <p class="col-md-4 text-end fs-4">{{ variant.result.sync_variants[0].retail_price }} {{variant.result.sync_variants[0].currency }}</p>
       </div>
-      <p class="fw-bold fs-5 mb-4">Subtitle</p>
+      <p class="fs-5 mb-4">{{ productInformation.result.product.type }}</p>
       
-      <p class="fs-6 mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci aliquid ea est explicabo excepturi minima velit porro, odit corporis dolorem fugiat quos dignissimos dicta recusandae iusto, nostrum possimus nobis nemo!</p>
+      <p class="fs-6 mb-4">{{ productInformation.result.product.description | slice:0:productInformation.result.product.description.indexOf('•') }}</p>
 
       <div class="col-md-12 mb-3">
-        <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Size
+        <div ngbDropdown class="dropdown">
+          <button type="button" class="btn btn-outline-dark w-100" id="dropdownBasic1" ngbDropdownToggle>
+            {{ selectedSize || "Select size" }}
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <div ngbDropdownMenu class="dropdown-menu w-100" aria-labelledby="dropdownBasic1">
+            @for (variant of variant.result.sync_variants; track variant) {
+              @if (variant.availability_status == "active") {
+                <button ngbDropdownItem (click)="setSelectedSize(variant.size)">{{ variant.size }}</button>
+              }
+              @else {
+                  <button ngbDropdownItem class="disabled text-decoration-line-through">
+                    {{ variant.size }}
+                  </button>
+              }
+            }
+          </div>
         </div>
       </div>
 
@@ -56,22 +63,39 @@
         </ul>
       </div>
 
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-highlights fs-3 me-3"></i>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex align-items-center">
+          <i class="bi bi-highlights fs-3 me-3"></i>
+          <div>
             <span class="fw-bold">Fabric</span>
-          </li>
-          <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-info-circle-fill fs-3 me-3"></i>
+            @for (material of productInformation.result.variants[0].material; track material) {
+              <p>{{ material.name + " " + material.percentage + "%"}}</p>
+            }
+          </div>
+        </li>
+        <li class="list-group-item d-flex align-items-center">
+          <i class="bi bi-info-circle-fill fs-3 me-3"></i>
+          <div>
             <span class="fw-bold">Information</span>
-          </li>
-          <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-arrows-angle-expand fs-3 me-3"></i>
+            @for (technique of productInformation.result.product.techniques; track technique) {
+              @if (technique.is_default === true) {
+                <p>{{ technique.display_name}}</p>
+              }
+            }
+            <!-- Additional content for Information -->
+          </div>
+        </li>
+        <li class="list-group-item d-flex align-items-center">
+          <i class="bi bi-arrows-angle-expand fs-3 me-3"></i>
+          <div>
             <span class="fw-bold">Fit</span>
-          </li>
-        </ul>
-      
+            <!-- Additional content for Fit -->
+            <p>            
+              <button (click)="openSizeGuide()" class="btn btn-outline-dark">Size Guide</button>
+            </p>
+          </div>
+        </li>
+      </ul>
       </div>
     </div>
-
 </div>

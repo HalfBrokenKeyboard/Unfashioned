@@ -17,7 +17,15 @@ export class PrintfulService {
     return this.http.get(this.apiUrl);
   }
 
-  getVariants(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}?endpoint=store/variants/${id}`);
+  getSyncProduct(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}?endpoint=store/products/${id}`);
+  }
+
+  getProductInformation(productID: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}?endpoint=products/${productID}`);
+  }
+
+  getProductSizes(productID: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}?endpoint=products/${productID}/sizes`);
   }
 }

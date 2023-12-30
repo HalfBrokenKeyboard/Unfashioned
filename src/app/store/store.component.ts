@@ -9,6 +9,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit{
+  placeholders: [1,2,3]; 
   products: any[];
   selectedProduct: any; 
 
@@ -34,7 +35,7 @@ export class StoreComponent implements OnInit{
       },
     });
   }
-  
+
   updateView() {
     this.cdr.detectChanges();
   }

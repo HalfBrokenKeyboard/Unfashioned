@@ -10,16 +10,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust as needed for your design */
-    overflow: hidden;
-    position: relative;
+    height: 100vh;
+      img {
+        transition: filter 0.5s, transform 0.5s; /* Add transition for smooth changes */
+    }
   }
   
-  .centered-image img {
-    transition: transform 0.3s ease-in-out;
+  .placeholder-image {
+    width: 100%;
+    height: 50vh; /* Adjust height based on your design */
+    background-color: rgb(138, 138, 138); /* Placeholder background color */
   }
-  
-  .centered-image:hover img {
-    transform: scale(1.1); /* Adjust the scaling factor as desired */
-  }
-  

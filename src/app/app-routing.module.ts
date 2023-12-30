@@ -7,9 +7,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 import { ProductComponent } from './product/product.component';
 import { SavedComponent } from './saved/saved.component';
 import { StoreComponent } from './store/store.component';
+import { TermsofserviceComponent } from './termsofservice/termsofservice.component';
 
 const routes: Routes = [
  { path: '', component: HomepageComponent },
@@ -20,12 +22,16 @@ const routes: Routes = [
  { path: 'cart', component: CartComponent }, 
  { path: 'login', component: LoginComponent }, 
  { path: 'account', component: AccountComponent },
- { path: 'saved', component: SavedComponent}
+ { path: 'saved', component: SavedComponent },
+ { path: 'terms', component: TermsofserviceComponent },
+ { path: 'privacy', component: PrivacyComponent }
  // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableViewTransitions: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}

@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Size Guide</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="table-responsive">
+        <h3>Measure Yourself</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest (inches)</th>
+              <th>Waist (inches)</th>
+              <th>Hips (inches)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sizeTable of sizeGuide.size_tables">
+              <td>{{ sizeTable.type_label }}</td>
+              <td *ngFor="let measurement of sizeTable.values">
+                {{ measurement.value }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+  </div>
