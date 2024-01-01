@@ -6,7 +6,7 @@ module.exports = async (request, response) => {
   try {
     // Assuming you pass the endpoint as a query parameter, e.g., /api/printful?endpoint=store/products
     const { body } = request;
-    const endpoint = request.query.endpoint || 'store/products';
+    const endpoint = request.query.endpoint;
 
     const { data } = await axios.get(
       `https://api.printful.com/${endpoint}`,

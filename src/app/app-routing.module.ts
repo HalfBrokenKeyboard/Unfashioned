@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutFailedComponent } from './checkout-failed/checkout-failed.component';
+import { CheckoutSuccesComponent } from './checkout-succes/checkout-succes.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -24,7 +26,9 @@ const routes: Routes = [
  { path: 'account', component: AccountComponent },
  { path: 'saved', component: SavedComponent },
  { path: 'terms', component: TermsofserviceComponent },
- { path: 'privacy', component: PrivacyComponent }
+ { path: 'privacy', component: PrivacyComponent },
+ { path: 'succes', component: CheckoutSuccesComponent},
+ { path: 'failed', component: CheckoutFailedComponent},
  // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
