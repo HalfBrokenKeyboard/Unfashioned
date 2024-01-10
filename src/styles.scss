@@ -5,3 +5,12 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: 'Pixim';
+    src: url('./fonts/Pixim.otf') format('opentype');
+    /* Add more src formats if necessary (e.g., woff, woff2) */
+}
+@media screen and (max-width: 660px){
+    
+}

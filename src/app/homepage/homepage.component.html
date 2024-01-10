@@ -1,5 +1,24 @@
-<section class="centered-image">
-  <img src="assets/frontpage.png" height="750" alt="Frontpage Image" />
+<!-- <section class="centered-image" id="scalingSection">
+  <div  class="allText" appScrollAnimation>
+    <h2>RATTLE THE</h2>
+    <h1 id="scrollingH1" data-text="Chains of conformity" appScrollAnimation>Chains of conformity</h1>
+    <p class="missing lead">Missing since 1994.</p>
+
+    
+
+    <p class="lead">
+      Icons of Defiance, Symbols of Strength. 
+      <br>
+      Unleash the Fury of Freedom.
+    </p>
+  </div>
+</section> -->
+
+<section class="centered-image" id="scalingSection">
+  <div class="skulls-container">
+    <img class="skull2" src="assets/skull jaw.png" alt="" appScrollAnimation>
+    <img class="skull" src="assets/skull head.png" alt="" appScrollAnimation>
+  </div>
 </section>
 
 <section class="py-5 bg-light">
@@ -55,26 +74,14 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-            @defer {
-            <div class="col" *ngFor="let product of products">
+            @defer (when !!productsInformations) {
+            <div class="col" *ngFor="let product of productsInformations">
               <div class="p-3 rounded">
-                <img
-                  (click)="this.setSelectedProduct(product)"
-                  routerLink="/product"
-                  src="{{ product.thumbnail_url }}"
-                  class="img-fluid rounded img-hover"
-                />
+                <img (click)="this.setSelectedProduct(product)" routerLink="/product" src="{{ product.sync_product.thumbnail_url }}" class="img-fluid rounded img-hover"/>
                 <div class="p-3">
-                  <h5 class="card-title text-center m-3">{{ product.name }}</h5>
+                  <h5 class="card-title text-center m-3">{{ product.sync_product.name }}</h5>
                   <div class="d-flex justify-content-center">
-                    <div class="btn-group bg-dark">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-light"
-                      >
-                        Add to cart
-                      </button>
-                    </div>
+                    <p>{{ product.sync_variants[0].retail_price + " " + product.sync_variants[0].currency }} </p>
                   </div>
                 </div>
               </div>
@@ -152,9 +159,15 @@
   <div class="container">
     <div class="row">
       <!-- Left side: Map -->
-      <div class="col-lg-6 mb-4">
-        <app-map></app-map>
-      </div>
+      @defer {
+        <div class="col-lg-6 mb-4">
+          <app-map></app-map>
+        </div>
+      }
+      @placeholder {
+        
+      }
+      
 
       <!-- Right side: Text content -->
       <div class="col-lg-6">

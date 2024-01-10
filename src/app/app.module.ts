@@ -11,8 +11,6 @@ import { MapComponent } from './map/map.component';
 import { StoreComponent } from './store/store.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ContactComponent } from './contact/contact.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { LoginComponent } from './login/login.component';
 import { StoreOptionsComponent } from './store-options/store-options.component';
 import { ProductComponent } from './product/product.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +19,9 @@ import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 import { SavedComponent } from './saved/saved.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductService } from './product.service';
+import { StripeService } from './stripe.service';
+import { ScrollAnimationDirective } from './scroll-animation.directive';
 
 
 @NgModule({
@@ -29,16 +30,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     MapComponent,
-    StoreComponent,
     HomepageComponent,
     ContactComponent,
-    CheckoutComponent,
-    LoginComponent,
-    StoreOptionsComponent,
     ProductComponent,
     CartComponent,
     AccountComponent,
     SavedComponent,
+    ScrollAnimationDirective,
+    StoreComponent,
+    StoreOptionsComponent
   ],
   imports: [
     HttpClientModule, 
@@ -47,7 +47,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule,
   ],
-  providers: [PrintfulService],
+  providers: [PrintfulService, ProductService, StripeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutFailedComponent } from './checkout-failed/checkout-failed.component';
 import { CheckoutSuccesComponent } from './checkout-succes/checkout-succes.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
@@ -14,12 +13,13 @@ import { ProductComponent } from './product/product.component';
 import { SavedComponent } from './saved/saved.component';
 import { StoreComponent } from './store/store.component';
 import { TermsofserviceComponent } from './termsofservice/termsofservice.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CheckoutStepsComponent } from './checkout-steps/checkout-steps.component';
 
 const routes: Routes = [
  { path: '', component: HomepageComponent },
  { path: 'store', component: StoreComponent }, 
  { path: 'contact', component: ContactComponent }, 
- { path: 'checkout', component: CheckoutComponent }, 
  { path: 'product', component: ProductComponent }, 
  { path: 'cart', component: CartComponent }, 
  { path: 'login', component: LoginComponent }, 
@@ -27,9 +27,10 @@ const routes: Routes = [
  { path: 'saved', component: SavedComponent },
  { path: 'terms', component: TermsofserviceComponent },
  { path: 'privacy', component: PrivacyComponent },
+ { path: 'checkout', component: CheckoutStepsComponent  },
  { path: 'succes', component: CheckoutSuccesComponent},
  { path: 'failed', component: CheckoutFailedComponent},
- // { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+ { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
 @NgModule({

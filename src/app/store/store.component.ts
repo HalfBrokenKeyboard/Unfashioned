@@ -1,25 +1,39 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, NgModule } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { PrintfulService } from '../printful.service';
 import { ProductService } from '../product.service';
+import { CommonModule } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.scss']
 })
-export class StoreComponent implements OnInit{
-  placeholders: [1,2,3]; 
-  products: any[];
-  selectedProduct: any; 
+export class StoreComponent implements OnInit {
+  @NgModule({
+    imports: [
+      // Other modules...
+      CommonModule,
+    ],
+    // Other configurations...
+  })
+  placeholders: [1, 2, 3];
+
+  products: any[] = [];
+  productsInformations: any[];
+
+  selectedProduct: any;
 
   constructor(
-    private printfulService: PrintfulService, 
+    private printfulService: PrintfulService,
     private cdr: ChangeDetectorRef,
-    private productService: ProductService) {}
-  
+    private productService: ProductService
+  ) {}
+
   ngOnInit() {
-    this.productService.currentProduct.subscribe(product => this.selectedProduct = product)
+    this.productService.currentProduct.subscribe(product => this.selectedProduct = product);
     this.fetchPrintfulProducts();
   }
 
@@ -27,13 +41,26 @@ export class StoreComponent implements OnInit{
     this.printfulService.getProducts().subscribe({
       next: (data) => {
         this.products = data.result;
-  
-        this.updateView();
+        this.fetchSyncProductsInformation();
       },
       error: (error) => {
         console.error('Error fetching Printful products:', error);
-      },
+      }
     });
+  }
+
+  fetchSyncProductsInformation(): void {
+    const observables = this.products.map(product => this.printfulService.getSyncProduct(product.id));
+
+    forkJoin(observables).subscribe(
+      (variantDataArray) => {
+        this.productsInformations = variantDataArray.map(data => data.result);
+        this.updateView();
+      },
+      (error) => {
+        console.error('Error fetching Printful product information:', error);
+      }
+    );
   }
 
   updateView() {
@@ -43,5 +70,8 @@ export class StoreComponent implements OnInit{
   setSelectedProduct(product) {
     this.productService.setProduct(product);
   }
-  
+
+  addToCart(product) {
+    this.productService.addToCart(product);
+  }
 }

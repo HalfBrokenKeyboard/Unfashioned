@@ -1,86 +1,183 @@
 <!-- cart.component.html -->
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <!-- Add your cart items here -->
-            <!-- Example: -->
-            <h3 class="">Your selections</h3>
-            <hr class="item-divider">
-
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="/assets/Tshirt1.png" class="card-img-top" alt="Item Image">
+<div>
+  @if (cart[0] != null) {
+    <div class="container mt-5">
+      <div class="row">
+          <div class="col-md-8">
+              <!-- Add your cart items here -->
+              <!-- Example: -->
+              <h3 class="">Selections</h3>
+  
+              @for (product of cart; track product) {
+                  @if (!isProductRepeated(product)) {
+                      <hr class="item-divider">
+                      <div class="row">
+                          <div class="col-md-4">
+                              <img src="{{ product.files[1].thumbnail_url}}" class="card-img-top" alt="Item Image">
+                          </div>
+                          <div class="col-md-8">
+                              <h5 class="card-title">{{ product.name }}</h5>
+                              <div class="d-flex flex-column align-items-start">
+                                  <p class="card-text mb-2">Price: {{ product.retail_price + " " + product.currency }}</p>
+                                  <p class="card-text mb-2">Quantity: {{ getQuantity(product) }}</p>
+                                  <p class="card-text mb-2">Color: {{ product.color }}</p>
+                                </div>
+          
+                              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                  <div class="btn-group me-2" role="group" aria-label="Edit button">
+                                    <button type="button" class="btn btn-outline-dark">
+                                      <i class="fas fa-pencil"></i> Edit
+                                    </button>
+                                  </div>
+                                
+                                  <div class="btn-group me-2" role="group" aria-label="Remove button">
+                                    <button type="button" class="btn btn-outline-dark" (click)="removeFromCart(product.id)">
+                                      <i class="fas fa-trash"></i> Remove
+                                    </button>
+                                  </div>
+                                
+                                  <div class="btn-group" role="group" aria-label="Save button">
+                                    <button type="button" class="btn btn-outline-dark">
+                                      <i class="fas fa-heart"></i> Save item
+                                    </button>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  }
+              }
+             
+  
+              <hr class="item-divider">
+          </div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Order</h5>
+                  <!-- <hr class="item-divider">
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="card-text">Subtotal</p>
+                    <p class="card-text">{{ getCartTotal() + " " + cart[0].currency }}</p>
+                  </div>
+                  <hr class="item-divider">
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="card-text">Shipping</p>
+                    <p class="card-text">KR 0 (DHL Express Worldwide)</p>
+                  </div> -->
+                  <hr class="item-divider">
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="card-text">Total</p>
+                    <p class="card-text">{{ getCartTotal() + " " + cart[0].currency }}</p>
+                  </div>
+                  <hr class="item-divider">
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="card-text">VAT (Included)</p>
+                    <p class="card-text">{{ getCartVat() + " " + cart[0].currency }}</p>
+                  </div>
+                  <hr class="item-divider">
+                  
+                  <div class="d-grid gap-2">
+                    <button routerLink="/checkout" class="btn btn-dark btn-block">Checkout</button>
+                  </div>
                 </div>
-                <div class="col-md-8">
-                    <h5 class="card-title">Item Name</h5>
-                    <p class="card-text">Item description</p>
-                    <div class="d-flex justify-content-between align-items-center">
+              </div>
+
+              <!-- <div class="card mb-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-start">
+                        <i class="bi bi-cash-stack fs-3 me-3"></i>
                         <div>
-                            <p class="card-text">Price: $99.99</p>
+                            <span class="fw-bold">Add Coupon Code (optional)</span>
+                            <br>
+                            <br>
+                              <div class="form-group">
+                                <label for="exampleInput">Insert your coupon code here</label>
+                                <input type="text" class="form-control" id="exampleInput" placeholder="Enter text">
+                              </div>
+                            <br>
                         </div>
-                    </div>
-
+                    </li>
+                </ul>
+            </div> -->
+            
+              <div class="card">
+                <ul class="list-group list-group-flush">
+                  <!-- May we help? -->
+                  <li class="list-group-item d-flex align-items-start">
+                    <i class="bi bi-question-circle-fill fs-3 me-3"></i>
                     <div>
-                        <button class="btn btn-outline-dark">Edit</button>
-                        <button class="btn btn-outline-dark">Remove</button>
-                        <button class="btn btn-outline-dark">Save item</button>
+                      <span class="fw-bold">May we help?</span>
+                      <br>
+                      <span><i class="fa-solid fa-phone"></i> +45 28146004</span>
+                      <br>
+                      <span><i class="fa-solid fa-envelope"></i> assistance&#64;unfashioned.net</span>
                     </div>
-                </div>
+                  </li>
+                
+                  <!-- Payment options -->
+                  <li class="list-group-item d-flex align-items-start">
+                    <i class="fa-solid fa-wallet fs-3 me-3"></i>
+                    <div>
+                      <span class="fw-bold">Payment options</span>
+                      <br>
+                      <span><i class="fa-brands fa-cc-visa fs-3"></i></span>
+                      <span><i class="fa-brands fa-cc-mastercard fs-3 px-2"></i></span>
+                      <span><i class="fa-brands fa-cc-apple-pay fs-3"></i></span>
+                      <span><i class="fa-brands fa-cc-amex fs-3  px-2"></i></span>
+                      <span><i class="fa-brands fa-cc-jcb fs-3"></i></span>
+                      <span><i class="fa-brands fa-cc-amazon-pay fs-3 px-2"></i></span>
+                      <span><i class="fa-brands fa-google-pay fs-3"></i></span>
+                    </div>
+                  </li>
+                
+                  <!-- Shipping options for Printful -->
+                  <li class="list-group-item d-flex align-items-start">
+                    <i class="fas fa-box-open fs-3 me-3"></i>
+                    <div>
+                      <span class="fw-bold">Shipping options</span>
+                      <br>
+                      <span><i class="fa-solid fa-truck"></i> Standard Shipping</span>
+                      <br>
+                      <span><i class="fa-solid fa-truck"></i> Flat Rate</span>
+                      <br>
+                      <span><i class="fa-solid fa-truck-fast"></i> Express Shipping</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="card mt-4">
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item d-flex align-items-start">
+                          <i class="fa-solid fa-plane-arrival fs-3 me-3"></i>
+                          <div>
+                              <span class="fw-bold">Expected arrival</span>
+                              <br>
+                              <span>mon. 08/01 - wed. 10/01</span>
+                              <br>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+            </div>   
+      </div>
+  </div>
+  }
+  @else {
+    <div class="container mt-5 bg-light">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card border-0 bg-transparent">
+            <div class="card-body text-center">
+              <i class="bi bi-bag-heart-fill" style="font-size: 6rem;"></i>
+              <h2 class="card-title">Your cart is empty</h2>
+              <p class="card-text">Looks like you haven't added any items to your cart yet.</p>
+              <a href="/store" class="btn btn-dark col-md-3">Browse Products</a>
             </div>
-
-            <hr class="item-divider">
+          </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">ORDER SUMMARY</h5>
-                    <hr class="item-divider">
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">Subtotal</p>
-                        <p class="card-text">$100</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">Shipping</p>
-                        <p class="card-text">KR 0 (DHL Express Worldwide)</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">Total</p>
-                        <p class="card-text">$100</p>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">VAT (Included)</p>
-                        <p class="card-text">$25</p>
-                    </div>
-                    
-                    <p><i>You will be charged only at the time of shipment except for DIY orders where the full amount is charged at the time of purchase.</i></p>
-                    <div class="d-grid gap-2">
-                        <button (click)="createCheckoutSession()" class="btn btn-dark btn-block">Checkout</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card mt-3">
-                <div class="card-body">
-                    <h5 class="card-title">MAY WE HELP?</h5>
-                    <p class="card-text">
-                        <i class="bi bi-geo-alt"></i> Address: Your Address
-                        <br>
-                        <i class="bi bi-telephone"></i> +45 0550622951
-                        <br>
-                        <i class="bi bi-envelope"></i> assistance&#64;dk-onlineshopping.gucci.com
-                    </p>
-                    <hr class="item-divider">
-                    <h5 class="card-text">PAYMENT OPTIONS</h5>
-                    <p>None yet..</p>
-                    <hr class="item-divider">
-                    <h5 class="card-text">SHIPPING OPTIONS</h5>
-                    <p>
-                        DHL Express Worldwide KR 0 
-                        <br>
-                        DHL Ground KR 0
-                    </p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    
+  }  
 </div>

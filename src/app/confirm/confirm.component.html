@@ -1,0 +1,32 @@
+<!-- Inside your template (checkout-succes.component.html) -->
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title text-center mb-4">Order Confirmed</h1>
+            <p class="card-text text-center">Thank you for your order! Your order has been confirmed.</p>
+            
+            <!-- Display order information -->
+            <div class="mb-3">
+              <p>Order id:</p>
+            </div>
+            <div class="mb-3">
+              <p>Total Amount:</p>
+            </div>
+            <div class="mb-3">
+                <p>Track order:</p>
+              </div>
+            <!-- Add more order information as needed -->
+  
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-danger mx-2" (click)="onCancelOrder()">Cancel Order</button>
+              <button class="btn btn-dark mx-2" (click)="onContinueShopping()">Confirm Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

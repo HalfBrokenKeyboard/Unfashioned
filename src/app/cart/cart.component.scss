@@ -1,0 +1,14 @@
+.item-divider {
+    height: 2px; /* Default height for non-short dividers */
+    margin: 8px 0; /* Default margin */
+  }
+
+  .short-divider {
+    height: 1px; /* Adjusted height for short dividers */
+  }
+
+  .card-img-top {
+    width: auto;
+    height: 180px;
+    object-fit: cover;
+   }

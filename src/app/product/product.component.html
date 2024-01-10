@@ -2,27 +2,27 @@
   <div class="row">
     <div class="col-md-6">
       <div class="p-3 rounded">
-        <img src="{{ selectedProduct.thumbnail_url }}" class="img-fluid rounded img-hover" alt="T-shirt Image">
+        <img src="{{ selectedProduct.sync_product.thumbnail_url }}" class="img-fluid rounded img-hover" alt="T-shirt Image">
       </div>
     </div>
     <div class="col-md-6">
       <div class="row">
-        <h1 class="col-md-8">{{ selectedProduct.name }}</h1>
-        <p class="col-md-4 text-end fs-4">{{ variant.result.sync_variants[0].retail_price }} {{variant.result.sync_variants[0].currency }}</p>
+        <h1 class="col-md-8">{{ selectedProduct.sync_product.name }}</h1>
+        <p class="col-md-4 text-end fs-4">{{ selectedProduct.sync_variants[0].retail_price + " " + selectedProduct.sync_variants[0].currency }}</p>
       </div>
       <p class="fs-5 mb-4">{{ productInformation.result.product.type }}</p>
       
       <p class="fs-6 mb-4">{{ productInformation.result.product.description | slice:0:productInformation.result.product.description.indexOf('•') }}</p>
 
       <div class="col-md-12 mb-3">
-        <div ngbDropdown class="dropdown">
+        <div ngbDropdown #myDropdown="ngbDropdown" class="dropdown">
           <button type="button" class="btn btn-outline-dark w-100" id="dropdownBasic1" ngbDropdownToggle>
             {{ selectedSize || "Select size" }}
           </button>
           <div ngbDropdownMenu class="dropdown-menu w-100" aria-labelledby="dropdownBasic1">
-            @for (variant of variant.result.sync_variants; track variant) {
+            @for (variant of selectedProduct.sync_variants; track variant) {
               @if (variant.availability_status == "active") {
-                <button ngbDropdownItem (click)="setSelectedSize(variant.size)">{{ variant.size }}</button>
+                <button ngbDropdownItem (click)="setSelectedSize(variant.size)" (click)="setSelectVariant(variant)">{{ variant.size }}</button>
               }
               @else {
                   <button ngbDropdownItem class="disabled text-decoration-line-through">
@@ -37,7 +37,12 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-10 mb-3">
-            <button class="btn btn-dark btn-lg w-100">Add to Cart</button>
+            @if (selectedSize) {
+              <button class="btn btn-dark btn-lg w-100" (click)="addToCart(selectedVariant)">Add to Cart</button>
+            }
+            @else {
+              <button class="btn btn-dark btn-lg w-100" (click)="openDropdown(myDropdown)">Add to Cart</button>
+            }
           </div>
           <!-- Favorite button with heart icon -->
           <div class="col-md-2 mb-3">
@@ -49,15 +54,15 @@
       <div class="col-md-12 mb-4 card">
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-truck fs-3 me-3"></i>
+            <i class="fa-solid fa-truck-fast fs-3 me-3"></i>
             <span class="fw-bold">Free shippping</span>
           </li>
           <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-box2-fill fs-3 me-3"></i>
+            <i class="fa-solid fa-box-open fs-3 me-3"></i>
             <span class="fw-bold">Secure Packaging</span>
           </li>
           <li class="list-group-item d-flex align-items-center">
-            <i class="bi bi-arrow-return-left fs-3 me-3"></i>
+            <i class="fa-solid fa-arrow-rotate-left fs-3 me-3"></i>
             <span class="fw-bold">Easy Returns</span>
           </li>
         </ul>
@@ -65,7 +70,7 @@
 
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex align-items-center">
-          <i class="bi bi-highlights fs-3 me-3"></i>
+          <i class="fa-solid fa-circle-half-stroke fs-3 me-3"></i>
           <div>
             <span class="fw-bold">Fabric</span>
             @for (material of productInformation.result.variants[0].material; track material) {
@@ -74,7 +79,7 @@
           </div>
         </li>
         <li class="list-group-item d-flex align-items-center">
-          <i class="bi bi-info-circle-fill fs-3 me-3"></i>
+          <i class="fa-solid fa-circle-info fs-3 me-3"></i>
           <div>
             <span class="fw-bold">Information</span>
             @for (technique of productInformation.result.product.techniques; track technique) {
@@ -86,7 +91,7 @@
           </div>
         </li>
         <li class="list-group-item d-flex align-items-center">
-          <i class="bi bi-arrows-angle-expand fs-3 me-3"></i>
+          <i class="fa-solid fa-up-right-and-down-left-from-center fs-3 me-3"></i>
           <div>
             <span class="fw-bold">Fit</span>
             <!-- Additional content for Fit -->

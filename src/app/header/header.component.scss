@@ -11,7 +11,6 @@ header {
           align-items: center;
           text-align: center;
           text-decoration: none;
-          color: white;
         }
       }
     }
@@ -23,9 +22,52 @@ header {
     align-items: center;
     text-align: center;
     text-decoration: none;
-    color: white;
   }
+  
+}
+
+.title {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block; /* Ensures the hover effect works smoothly */
+
   h1 {
-    font-family: Georgia;
+    text-decoration: none;
+    font-family: 'pixim';
+    transition: transform 0.8s ease-in-out, color 0.3s ease;
+    color: #ffffff; /* Initial text color */
+  }
+
+  &:hover h1 {
+    transform: scale(1.1) rotate(1deg); /* Scaling up on hover */
+    color: #df4a82; /* Change text color on hover */
+  }
+}
+
+.navbar-toggler {
+  display: none; /* Hide the list icon by default */
+}
+
+.navbar-collapse {
+  border-top: none; /* Remove the white line */
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 767px) {
+  .title h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .navbar-toggler {
+    display: block; /* Display the list icon */
+  }
+
+  .d-lg-flex {
+    display: none; /* Hide the list for screens smaller than lg */
+  }
+  
+  .navbar-nav.d-lg-none {
+    display: none; /* Hide the list for screens smaller than lg */
   }
 }

@@ -15,7 +15,7 @@ export class MapComponent implements OnInit {
     this.initMap();
   }
 
-  initMap() {
+  private initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 56.1629, lng: 10.2039 }, // Coordinates for Aarhus, Denmark
       zoom: 13, // Adjust zoom level as needed

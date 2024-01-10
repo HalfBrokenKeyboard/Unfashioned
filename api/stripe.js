@@ -1,25 +1,29 @@
-// This is your test secret API key.
-const { apiUrl } = require('src/environments/environment');
-const stripe = require('stripe')(process.env.StripeAPIKey);
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.StripeTestKey);
 
 module.exports = async (req, res) => {
-    try {
-      const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price: '{{PRICE_ID}}',
-            quantity: 1,
-          },
-        ],
-        mode: 'payment',
-        success_url: `${apiUrl}/succes`,
-        cancel_url: `${apiUrl}/failed`,
-        automatic_tax: { enabled: true },
-      });
-  
-      res.status(303).json({ url: session.url });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
+    if (req.method === 'POST') {
+        try {
+          const session = await stripe.checkout.sessions.create({
+            // Your Checkout Session configuration
+            mode: 'payment',
+            success_url:`http://localhost:3000/checkout`,
+            cancel_url:`http://localhost:3000/failed`,
+            automatic_tax: {enabled: true},
+            line_items: [
+                {
+                    price: 'price_1OToXqCQhkYR2Pl3V5uI6F5i',
+                    quantity: 3,
+                },
+            ],
+          });
+    
+          res.status(200).json({ url: session.url });
+        } catch (error) {
+          res.status(error.statusCode).json({ statusCode: error.statusCode, message: error.message });
+        }
+      } else {
+        res.setHeader('Allow', 'POST');
+        res.status(405).end('Method Not Allowed');
+      }
+}
