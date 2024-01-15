@@ -1,53 +1,47 @@
-import { NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule} from "@angular/common";
 
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MapComponent } from './map/map.component';
-import { StoreComponent } from './store/store.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { ContactComponent } from './contact/contact.component';
-import { StoreOptionsComponent } from './store-options/store-options.component';
-import { ProductComponent } from './product/product.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PrintfulService } from './printful.service';
-import { CartComponent } from './cart/cart.component';
-import { AccountComponent } from './account/account.component';
-import { SavedComponent } from './saved/saved.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from './product.service';
-import { StripeService } from './stripe.service';
-import { ScrollAnimationDirective } from './scroll-animation.directive';
+import { AppRoutingModule } from './app-routing.module';
+
+// keep 
+import { SharedModule } from './shared/shared.module';
+import { ModulesModule } from './modules/modules.module';
+import { CoreModule } from './core/core.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+// delete
+import { PrintfulService } from './shared/services/printful.service';
+import { ProductService } from './shared/services/product.service';
+import { StripeService } from './core/services/stripe.service';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    MapComponent,
-    HomepageComponent,
-    ContactComponent,
-    ProductComponent,
-    CartComponent,
-    AccountComponent,
-    SavedComponent,
-    ScrollAnimationDirective,
-    StoreComponent,
-    StoreOptionsComponent
-  ],
+  declarations: [],
   imports: [
     HttpClientModule, 
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     NgbModule,
+    SharedModule,
+    CoreModule,
+    ModulesModule,
   ],
-  providers: [PrintfulService, ProductService, StripeService],
-  bootstrap: [AppComponent]
+  providers: [PrintfulService, ProductService, StripeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },],
+  bootstrap: []
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    appRef.bootstrap(AppComponent);
+  }
+}

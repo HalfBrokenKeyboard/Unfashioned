@@ -1,0 +1,60 @@
+<header [ngClass]="{ 'text-light sticky-top': !isHeaderTransparent, 'transparent': isHeaderTransparent }">
+  <div class="px-3 py-2 border-bottom">
+    <div class="container d-flex flex-column align-items-center">
+
+      <!-- Centered and larger title -->
+      <span class="title" routerLink="/">
+        <h1 class="my-2 my-lg-0 mx-auto text-decoration-none display-4">UNFASHIONED</h1>
+      </span>
+    
+      <div class="container-fluid">
+        <div class="row w-100 d-flex">
+          <ul class="nav col-3 my-2 justify-content-center my-md-0 text-small d-flex align-items-center" style="margin-right: 4.25em;"></ul>
+          
+          <ul class="nav col-5 my-2 justify-content-center my-md-0 text-small d-flex align-items-center">
+            <li>
+              <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white-50 fw-bolder">HOME</a>            </li>
+            <!-- ... (other navigation links) ... -->
+            <li>
+              <a routerLink="/store" routerLinkActive="active-link" ariaCurrentWhenActive="page" class="nav-link text-white-50 fw-bolder">CATALOG</a>
+            </li>
+            <li>
+              <a routerLink="/story" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link text-white-50 fw-bolder">OUR STORY</a>
+            </li>
+            <li>
+              <a routerLink="/contact" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link text-white-50 fw-bolder">REACH OUT</a>
+            </li>
+          </ul>
+          
+          
+    
+          <ul class="nav col-6 col-lg-auto ms-auto">
+              <!-- ... (icons and dynamic content) ... -->
+               <li>
+                <a routerLink="/saved" class="nav-link nav-icon text-white me-3">
+                  <i class="fa-solid fa-heart-crack"></i>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/cart" class="nav-link nav-icon text-white me-3 position-relative">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  @if (cartSize != 0 && cartSize <= 9) {
+                    <span class="badge badge-light bg-secondary position-absolute top-0 end-0 rounded-circle" style="margin-right: -3px;">{{ cartSize }}</span>
+                  } 
+                  @if (cartSize >= 10) {
+                    <span class="badge badge-light bg-secondary position-absolute top-0 end-0 rounded" style="margin-right: -6px;">{{ cartSize }}</span>
+                  }
+                </a>
+              </li>
+              <li>
+                <a routerLink="/login" class="nav-link nav-icon text-white">
+                  <i class="fa-solid fa-circle-user"></i>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>

@@ -1,5 +1,12 @@
+@defer {
 <app-header></app-header>
   <main class="m-5 ">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>   
   </main>
 <app-footer></app-footer>
+}
+@placeholder (minimum 1200ms) {
+  <main class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <span class="loader"></span>
+  </main>
+}
