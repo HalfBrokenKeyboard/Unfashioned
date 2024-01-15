@@ -1,10 +1,12 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { StripeService } from '../../../core/services/stripe.service';
 import { ProductService } from '../../../shared/services/product.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
+  imports: [RouterModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
