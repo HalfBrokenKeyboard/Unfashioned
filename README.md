@@ -1,6 +1,6 @@
 # Unfashioned
 
-[![Unfashioned Logo](link/to/logo.png)]([https://www.yourclothingbrandwebsite.com](https://unfashioned.vercel.app/))
+[![Unfashioned Logo]](https://unfashioned.vercel.app/))
 
 Unfashioned is not just a clothing brand; it's a lifestyle. Embrace the unconventional, celebrate individuality, and redefine fashion with our unique and bold designs. This repository houses the code and assets for our online presence.
 
