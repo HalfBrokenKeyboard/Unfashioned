@@ -1,6 +1,6 @@
 # Unfashioned
 
-Store: [Link](https://unfashioned.vercel.app/))
+Store: [Link](https://unfashioned.vercel.app/)
 
 Unfashioned is not just a clothing brand; it's a lifestyle. Embrace the unconventional, celebrate individuality, and redefine fashion with our unique and bold designs. This repository houses the code and assets for our online presence.
 
