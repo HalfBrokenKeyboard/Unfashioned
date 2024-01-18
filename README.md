@@ -29,5 +29,5 @@ After the installation, you can start the local development server:
 npm start
 ```
 
-Visit: [localhost:3000](http://localhost:3000) in your browser to preview the website.
+Visit: [http://localhost:3000](http://localhost:3000) in your browser to preview the website.
 For production deployment, make sure to customize the configuration files and follow best practices for security and performance.
