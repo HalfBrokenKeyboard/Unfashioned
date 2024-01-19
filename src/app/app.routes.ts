@@ -1,26 +1,20 @@
-import { RouterModule, Routes } from '@angular/router';
-
-
-import { AccountComponent } from './modules/pages/account/account.component';
-import { CartComponent } from './modules/pages/cart/cart.component';
-import { CheckoutFailedComponent } from './modules/components/checkout-failed/checkout-failed.component';
-import { CheckoutSuccesComponent } from './modules/components/checkout-succes/checkout-succes.component';
-import { ContactComponent } from './modules/pages/contact/contact.component';
+import {Routes} from '@angular/router';
 import { HomepageComponent } from './modules/pages/homepage/homepage.component';
-import { LoginComponent } from './modules/pages/login/login.component';
-import { PrivacyComponent } from './modules/pages/privacy/privacy.component';
-import { ProductComponent } from './modules/pages/product/product.component';
-import { SavedComponent } from './modules/pages/saved/saved.component';
 import { StoreComponent } from './modules/pages/store/store.component';
+import { ContactComponent } from './modules/pages/contact/contact.component';
+import { ProductComponent } from './modules/pages/product/product.component';
+import { CartComponent } from './modules/pages/cart/cart.component';
 import { TermsofserviceComponent } from './modules/pages/termsofservice/termsofservice.component';
-import { PageNotFoundComponent } from './modules/pages/page-not-found/page-not-found.component';
+import { PrivacyComponent } from './modules/pages/privacy/privacy.component';
 import { CheckoutComponent } from './modules/pages/checkout/checkout.component';
-import { StoryComponent } from './modules/pages/story/story.component';
-import { NgModule } from '@angular/core';
 import { PaymentComponent } from './modules/components/payment/payment.component';
 import { ConfirmComponent } from './modules/pages/confirm/confirm.component';
+import { CheckoutSuccesComponent } from './modules/components/checkout-succes/checkout-succes.component';
+import { CheckoutFailedComponent } from './modules/components/checkout-failed/checkout-failed.component';
+import { StoryComponent } from './modules/pages/story/story.component';
+import { PageNotFoundComponent } from './modules/pages/page-not-found/page-not-found.component';
 
-const routes: Routes = [
+export const APP_ROUTES: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'store', component: StoreComponent }, 
     { path: 'contact', component: ContactComponent }, 
@@ -46,12 +40,4 @@ const routes: Routes = [
     { path: 'canceled', component: CheckoutFailedComponent},
     { path: 'story', component: StoryComponent},
     { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
-   ];
-   
-   @NgModule({
-     imports: [RouterModule.forRoot(routes, {enableViewTransitions: true})],
-     exports: [RouterModule]
-   })
-   export class AppRoutingModule { 
-   
-   }
+];

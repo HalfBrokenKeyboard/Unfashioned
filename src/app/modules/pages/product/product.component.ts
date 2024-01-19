@@ -1,14 +1,14 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PrintfulService } from '../../../shared/services/printful.service';
 import { ProductService } from '../../../shared/services/product.service';
-import { SizeGuideModalComponent } from '../size-guide-modal/size-guide-modal.component';
+import { SizeGuideModalComponent } from '../../components/size-guide-modal/size-guide-modal.component';
 import { NgbDropdown, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true, 
-  imports: [CommonModule, NgbDropdownModule],
+  imports: [CommonModule, NgbDropdownModule, SizeGuideModalComponent],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
   providers: [NgbDropdown], 

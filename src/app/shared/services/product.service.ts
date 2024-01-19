@@ -1,10 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+//import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private apiUrl = environment.apiUrl; // Update to match your Vercel function endpoint
   private selectedProductKey = 'selectedProduct';
   private cartKey = 'cart';
 
@@ -17,7 +22,7 @@ export class ProductService {
   private cart = new BehaviorSubject<any[]>(this.loadCart());
   currentcart = this.cart.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   setProduct(product) {
     this.selectedProduct.next(product);

@@ -1,19 +1,21 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { PrintfulService } from '../../../shared/services/printful.service';
 import { ProductService } from '../../../shared/services/product.service';
 import { forkJoin } from 'rxjs';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { MapComponent } from '../../components/map/map.component';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { ScrollAnimationDirective } from 'src/app/shared/directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-homepage',
   standalone: true, 
-  imports: [MapComponent, CommonModule, RouterModule],
+  imports: [MapComponent, CommonModule, RouterOutlet, ScrollAnimationDirective],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent implements OnInit{
+export class HomepageComponent implements OnInit, OnDestroy {
+  private scriptElement: HTMLScriptElement;
   products: any[] = [];
   productsInformations: any[];
 
@@ -24,13 +26,19 @@ export class HomepageComponent implements OnInit{
     private cdr: ChangeDetectorRef,
     private productService: ProductService,
     @Inject(DOCUMENT) private document: Document){
-
+      this.loadGoogleMapsScript();
     }
+  
 
     ngOnInit() {
       this.productService.currentProduct.subscribe(product => this.selectedProduct = product);
       this.fetchPrintfulProducts();
-      this.loadGoogleMapsScript();
+    }
+
+    ngOnDestroy(): void {
+      if (this.scriptElement && this.scriptElement.src.includes('https://maps.googleapis.com')) {
+      this.document.body.removeChild(this.scriptElement);
+    }
     }
   
     fetchPrintfulProducts(): void {
@@ -72,12 +80,12 @@ export class HomepageComponent implements OnInit{
     return originalProducts.filter(product => product.name == "Chains of toxicity tee");
   }
   private loadGoogleMapsScript(): void {
-    const script = this.document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDL4xvuOAZh5WCLOmh-fBmDTKQxNDh2c8I`;
-    script.async = false;
-    script.defer = false;
+    this.scriptElement = this.document.createElement('script');
+    this.scriptElement.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDL4xvuOAZh5WCLOmh-fBmDTKQxNDh2c8I`;
+    this.scriptElement.async = false;
+    this.scriptElement.defer = false;
   
     // Append the script to the document body
-    this.document.body.appendChild(script);
+    this.document.body.appendChild(this.scriptElement);
   }
 }

@@ -1,18 +1,18 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [NgClass, RouterLink, RouterLinkActive]
 })
 export class HeaderComponent implements OnInit{
   cartSize: number; 
   cart: any; 
-
-  isHeaderTransparent = false;
-
-  
 
   constructor(private productService: ProductService){
 
@@ -25,9 +25,4 @@ export class HeaderComponent implements OnInit{
     });
   }
 
-  @HostListener('window:scroll', [])
-    onscroll(): void {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.isHeaderTransparent = scrollPosition > 50;    
-    }
 }

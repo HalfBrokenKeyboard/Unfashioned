@@ -3,23 +3,23 @@ import { forkJoin } from 'rxjs';
 import { StoreOptionsComponent } from '../../components/store-options/store-options.component';
 import { PrintfulService } from 'src/app/shared/services/printful.service';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ScrollAnimationDirective } from 'src/app/shared/directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-store',
   standalone: true, 
-  imports: [StoreOptionsComponent, CommonModule, RouterModule],
+  imports: [StoreOptionsComponent, CommonModule, RouterModule, NgOptimizedImage],
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
   placeholders: [1, 2, 3];
-
   products: any[] = [];
   productsInformations: any[];
-
   selectedProduct: any;
+  loading: boolean = true; // Add loading indicator
 
   constructor(
     private printfulService: PrintfulService,
@@ -40,6 +40,7 @@ export class StoreComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching Printful products:', error);
+        this.loading = false; // Set loading to false in case of an error
       }
     });
   }
@@ -51,9 +52,11 @@ export class StoreComponent implements OnInit {
       (variantDataArray) => {
         this.productsInformations = variantDataArray.map(data => data.result);
         this.updateView();
+        this.loading = false; // Set loading to false when data is available
       },
       (error) => {
         console.error('Error fetching Printful product information:', error);
+        this.loading = false; // Set loading to false in case of an error
       }
     );
   }

@@ -3,12 +3,12 @@
 <app-store-options></app-store-options>
 
 @defer (when !!productsInformations) {
-  <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-3" >
   <div class="col" *ngFor="let product of productsInformations;">
     <div class="p-3 rounded">
-        <img (click)="setSelectedProduct(product)" routerLink="/product" src="{{ product.sync_product.thumbnail_url }}" class="img-fluid rounded img-hover">
+        <img alt="product image" (click)="setSelectedProduct(product)" routerLink="/product" ngSrc="{{ product.sync_product.thumbnail_url }}" class="img-fluid rounded img-hover" width="550" height="550" priority="LCP">
         <div class="p-3 mt-3">
-          <h5 class="card-title text-center m-3"> {{ product.sync_product.name }}</h5>
+          <h2 class="card-title text-center m-3 fs-5"> {{ product.sync_product.name }}</h2>
           <div class="d-flex justify-content-center">
             <!-- <div class="btn-group bg-dark">
               <button (click)="addToCart(product)" type="button" class="btn btn-sm btn-outline-light">Add to cart</button>

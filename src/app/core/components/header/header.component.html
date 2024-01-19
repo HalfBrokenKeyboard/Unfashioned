@@ -1,4 +1,4 @@
-<header [ngClass]="{ 'text-light sticky-top': !isHeaderTransparent, 'transparent': isHeaderTransparent }">
+<header class="bg-dark">
   <div class="px-3 py-2 border-bottom">
     <div class="container d-flex flex-column align-items-center">
 
@@ -13,16 +13,17 @@
           
           <ul class="nav col-5 my-2 justify-content-center my-md-0 text-small d-flex align-items-center">
             <li>
-              <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white-50 fw-bolder">HOME</a>            </li>
+              <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fw-bolder">HOME</a>            
+            </li>
             <!-- ... (other navigation links) ... -->
             <li>
-              <a routerLink="/store" routerLinkActive="active-link" ariaCurrentWhenActive="page" class="nav-link text-white-50 fw-bolder">CATALOG</a>
+              <a routerLink="/store" routerLinkActive="active-link" ariaCurrentWhenActive="page" class="nav-link fw-bolder">CATALOG</a>
             </li>
             <li>
-              <a routerLink="/story" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link text-white-50 fw-bolder">OUR STORY</a>
+              <a routerLink="/story" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link fw-bolder">OUR STORY</a>
             </li>
             <li>
-              <a routerLink="/contact" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link text-white-50 fw-bolder">REACH OUT</a>
+              <a routerLink="/contact" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link fw-bolder">REACH OUT</a>
             </li>
           </ul>
           
@@ -30,11 +31,11 @@
     
           <ul class="nav col-6 col-lg-auto ms-auto">
               <!-- ... (icons and dynamic content) ... -->
-               <li>
+               <!-- <li>
                 <a routerLink="/saved" class="nav-link nav-icon text-white me-3">
                   <i class="fa-solid fa-heart-crack"></i>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a routerLink="/cart" class="nav-link nav-icon text-white me-3 position-relative">
                   <i class="fa-solid fa-bag-shopping"></i>
@@ -46,11 +47,11 @@
                   }
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a routerLink="/login" class="nav-link nav-icon text-white">
                   <i class="fa-solid fa-circle-user"></i>
                 </a>
-              </li>
+              </li> -->
           </ul>
         </div>
       </div>

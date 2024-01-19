@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <ul class="checkout-steps">
+    <li class="step-container">
+      <div class="step" [class.active]="step === 'payment'">
+        <i class="fa" [class.fa-check]="isStepCompleted('confirm')"></i>
+        <span *ngIf="step === 'payment'">1</span>
+      </div>
+      <div class="step-text">Payment</div>
+    </li>
+    <div class="line"></div>
+    <li class="step-container">
+      <div class="step" [class.active]="step === 'confirm'">
+        <i class="fa" [class.fa-check]="isStepCompleted('confirm')"></i>
+        <span *ngIf="!isStepCompleted('confirm')">2</span>
+      </div>
+      <div class="step-text">Confirm</div>
+    </li>
+    <div class="line"></div>
+    <li class="step-container">
+      <div class="step" [class.active]="step === 'done'">
+        <i class="fa" [class.fa-check]="isStepCompleted('done')"></i>
+        <span *ngIf="!isStepCompleted('confirm')">3</span>
+      </div>
+      <div class="step-text">Done</div>
+    </li>
+  </ul>
+  
+  
+
+    <!-- Your content for each step goes here -->
+    <router-outlet></router-outlet>
+  </div>

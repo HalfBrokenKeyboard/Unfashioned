@@ -19,23 +19,20 @@ export class CartComponent implements OnInit{
     this.productService.currentcart.subscribe(cart => {
       this.cart = cart;    
     });
-    this.cart.forEach(value => {
-      console.log(value);
-    });
   }
 
-  createCheckoutSession() {
-    this.stripeService.createCheckoutSession().subscribe({
-      next: (session: any) => {
-        // Redirect to the session URL or handle as needed
-        window.location.href = session.url;
+  // createCheckoutSession() {
+  //   this.stripeService.createCheckoutSession().subscribe({
+  //     next: (session: any) => {
+  //       // Redirect to the session URL or handle as needed
+  //       window.location.href = session.url;
         
-      },
-      error: (error) => {
-        console.error('Error creating checkout session:', error);
-      }
-    });
-  }
+  //     },
+  //     error: (error) => {
+  //       console.error('Error creating checkout session:', error);
+  //     }
+  //   });
+  // }
 
   removeFromCart(productID: any) {
     this.productService.removeFromCart(productID);

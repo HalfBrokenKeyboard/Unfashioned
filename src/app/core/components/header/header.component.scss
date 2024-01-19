@@ -1,16 +1,6 @@
 header {
-    position: sticky  ;
-    top: 0;
-    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8) !important; /* Adjust the alpha channel for transparency */
     z-index: 1000; /* Ensure the header appears above other content */
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
-
-    .transparent {
-      background-color: rgba(0, 0, 0, 0.301) !important;
-      transition: background-color 0.3s ease;
-    }
   
     .title {
       margin: 0;
@@ -51,6 +41,7 @@ header {
   h1 {
     text-decoration: none;
     font-family: 'pixim';
+    font-weight: bold;
     transition: transform 0.8s ease-in-out, color 0.3s ease;
     color: #ffffff; /* Initial text color */
   }
@@ -95,9 +86,12 @@ header {
 
 .nav-link {
   font-family: 'Work Sans', sans-serif;
+  color: rgb(192, 192, 192);
+  transition: transform 0.8s ease, color 0.4s ease;
 }
 
 .nav-link:hover {
+  transform: scale(1.1); /* Scaling up on hover */
   color: white !important; /* Change text color to white on hover */
 }
 
