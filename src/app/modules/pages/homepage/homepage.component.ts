@@ -4,13 +4,13 @@ import { ProductService } from '../../../shared/services/product.service';
 import { forkJoin } from 'rxjs';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { MapComponent } from '../../components/map/map.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { ScrollAnimationDirective } from 'src/app/shared/directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-homepage',
   standalone: true, 
-  imports: [MapComponent, CommonModule, RouterOutlet, ScrollAnimationDirective],
+  imports: [MapComponent, CommonModule, RouterOutlet, ScrollAnimationDirective, RouterModule],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private productService: ProductService,
     @Inject(DOCUMENT) private document: Document){
-      this.loadGoogleMapsScript();
+      // this.loadGoogleMapsScript();
     }
   
 

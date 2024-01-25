@@ -4,10 +4,11 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "url": "http://localhost:3000/",
+      "runtimeArgs": [] // Remove "--new-window" to keep the existing Brave window open
     },
     {
       "name": "ng test",

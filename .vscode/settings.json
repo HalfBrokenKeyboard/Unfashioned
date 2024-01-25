@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.tabs.defaultIcon": "primitive-dot",
+    "debug.javascript.defaultRuntimeExecutable": {
+        
+        "pwa-node": "node"
+    }
+}

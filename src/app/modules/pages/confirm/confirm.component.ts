@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { StripeService } from 'src/app/core/services/stripe.service';
 
 @Component({
   selector: 'app-confirm',
@@ -8,7 +10,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './confirm.component.html',
   styleUrl: './confirm.component.scss'
 })
-export class ConfirmComponent {
+export class ConfirmComponent implements OnInit {
+  stripeService = inject(StripeService)
+  
+  ngOnInit(): void {
+
+  }
+
   @Output() stepChange: EventEmitter<string> = new EventEmitter<string>();
 
   onContinueShopping() {
