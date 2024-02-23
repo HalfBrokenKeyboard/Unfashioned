@@ -1,10 +1,10 @@
 // stripe.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Observable } from 'rxjs';
-//import { environment } from 'src/environments/environment.prod';
+// import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 declare module 'stripe' {
   interface Stripe {
