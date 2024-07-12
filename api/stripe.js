@@ -22,6 +22,7 @@ module.exports = async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         ui_mode: 'embedded',
         mode: 'payment',
+        // TODO: This shouldnt be localhost when in production!
         return_url: 'http://localhost:3000//checkout/confirm',
         automatic_tax: { enabled: true },
         line_items: lineItems,

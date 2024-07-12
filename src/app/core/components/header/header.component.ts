@@ -13,6 +13,14 @@ import { NgClass } from '@angular/common';
 export class HeaderComponent implements OnInit{
   cartSize: number; 
   cart: any; 
+  isCollapsed = true;
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed
+    console.log(this.isCollapsed);
+    
+  }
+
 
   constructor(private productService: ProductService){
 

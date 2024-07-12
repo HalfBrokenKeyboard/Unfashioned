@@ -45,3 +45,6 @@ Thumbs.db
 # Ignore specific service files
 src/app/shared/services/printful.service.ts
 src/app/core/services/stripe.service.ts
+src/app/shared/services/printful.service.ts
+src/app/shared/services/printful.service.ts
+src/app/shared/services/product.service.ts

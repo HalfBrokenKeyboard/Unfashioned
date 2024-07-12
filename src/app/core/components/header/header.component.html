@@ -1,3 +1,4 @@
+<!-- TODO: Make Header work better on iphone formats -->
 <header class="bg-dark">
   <div class="px-3 py-2 border-bottom">
     <div class="container d-flex flex-column align-items-center">
@@ -7,37 +8,44 @@
         <h1 class="my-2 my-lg-0 mx-auto text-decoration-none display-4">UNFASHIONED</h1>
       </span>
     
-      <div class="container-fluid">
-        <div class="row w-100 d-flex">
-          <ul class="nav col-3 my-2 justify-content-center my-md-0 text-small d-flex align-items-center" style="margin-right: 4.25em;"></ul>
-          
-          <ul class="nav col-5 my-2 justify-content-center my-md-0 text-small d-flex align-items-center">
-            <li>
-              <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link fw-bolder">HOME</a>            
-            </li>
-            <!-- ... (other navigation links) ... -->
-            <li>
-              <a routerLink="/store" routerLinkActive="active-link" ariaCurrentWhenActive="page" class="nav-link fw-bolder">CATALOG</a>
-            </li>
-            <li>
-              <a routerLink="/story" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link fw-bolder">OUR STORY</a>
-            </li>
-            <li>
-              <a routerLink="/contact" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link fw-bolder">REACH OUT</a>
-            </li>
-          </ul>
-          
-          
-    
-          <ul class="nav col-6 col-lg-auto ms-auto">
-              <!-- ... (icons and dynamic content) ... -->
-               <!-- <li>
-                <a routerLink="/saved" class="nav-link nav-icon text-white me-3">
-                  <i class="fa-solid fa-heart-crack"></i>
-                </a>
-              </li> -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark row w-100 d-flex">
+          <div class="container-fluid">
+
+            <button
+            class="navbar-toggler collapsed align-items-center"
+            type="button"
+            (click)="toggleCollapse()"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div id="navbarCollapse" class="navbar-collapse collapse" [class.show]="!isCollapsed">
+            
+              <ul class="nav col-12 my-2 justify-content-center text-small align-items-center custom-nav" style="margin-left: 1.85rem;">
+                <li class="nav-item">
+                  <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">HOME</a>            
+                </li>
+                <!-- ... (other navigation links) ... -->
+                <li>
+                  <a routerLink="/store" routerLinkActive="active-link" ariaCurrentWhenActive="page" class="nav-link">CATALOG</a>
+                </li>
+                <li>
+                  <a routerLink="/story" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link">OUR STORY</a>
+                </li>
+                <li>
+                  <a routerLink="/contact" routerLinkActive="active-link" ariaCurrentWhenActive="page" href="#" class="nav-link">REACH OUT</a>
+                </li>
+              </ul>
+
+              
+            </div>
+
+            <ul class="nav col-lg-auto ms-auto ">
               <li>
-                <a routerLink="/cart" class="nav-link nav-icon text-white me-3 position-relative">
+                <a routerLink="/cart" routerLinkActive="active-link" class="nav-link nav-icon me-3 position-relative">
                   <i class="fa-solid fa-bag-shopping"></i>
                   @if (cartSize != 0 && cartSize <= 9) {
                     <span class="badge badge-light bg-secondary position-absolute top-0 end-0 rounded-circle" style="margin-right: -3px;">{{ cartSize }}</span>
@@ -47,14 +55,9 @@
                   }
                 </a>
               </li>
-              <!-- <li>
-                <a routerLink="/login" class="nav-link nav-icon text-white">
-                  <i class="fa-solid fa-circle-user"></i>
-                </a>
-              </li> -->
           </ul>
-        </div>
-      </div>
+          </div>
+        </nav>
 
     </div>
   </div>

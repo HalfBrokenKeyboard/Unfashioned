@@ -1,10 +1,9 @@
 const axios = require('axios');
 
-const printfulApiKey = process.env.PrintfulAPIKey; // replace with your actual Printful API key
+const printfulApiKey = process.env.PrintfulAPIKey;
 
 module.exports = async (request, response) => {
   try {
-    // Assuming you pass the endpoint as a query parameter, e.g., /api/printful?endpoint=store/products
     const { body } = request;
     const endpoint = request.query.endpoint;
 

@@ -8,108 +8,6 @@
   background-color: rgb(138, 138, 138);
 }
 
-.img-hover {
-  transition: transform 0.3s ease;
-}
-
-.img-hover:hover {
-  transform: scale(1.1) rotateY(13deg);
-}
-
-// .centered-image {
-//   margin: 0px;
-//   padding: 0px;
-//   background: linear-gradient(to bottom, white 80%, rgb(247, 248, 252)); /* Adjust the colors and percentage as needed */
-//   flex-direction: column;
-//   height: 200vh;
-  
-//   h1,
-//   h2 {
-//     margin: 25px 0;
-//   }
-
-//   .allText {
-//     // other styles...
-//     display: flex;
-//     position: sticky;
-
-//     flex-direction: column;
-//     align-items: center;  /* Center horizontally */
-//     justify-content: center;  /* Center vertically */
-//     top: 20vh;
-//     animation: scrollAnimation 1s ease-in-out; /* Correct the typo here */
-//     animation-play-state: paused;
-//     animation-delay: inherit;
-
-//     h2 {
-//       font-family: Georgia, 'Times New Roman', Times, serif;
-//       font-size: 3.2rem;
-//       margin-bottom: -52px !important;
-//     }
-
-//     h1 {
-//       width: 100%;
-//       font-family: 'pixim', sans-serif;
-//       padding-left: 35rem;
-//       font-size: 4rem;
-//       color: rgb(183, 183, 183);
-//       margin-bottom: -35px !important;
-//       white-space: nowrap;
-//     }
-
-//     h1::before {
-//       position: absolute;
-//       content: attr(data-text);
-//       width: 0;
-//       height: 100%;
-//       color: #df4a82;
-//       -webkit-text-stroke: 0vw white;
-//       overflow: hidden;
-//       animation: animate 7s linear infinite;
-//       animation-play-state: paused;
-//       animation-delay: inherit;
-//     }
-
-//     p {
-//       font-family: Cambria, serif;
-//       font-weight: 100;
-//       text-align: center;
-//       font-size: 1.5rem;
-//     }
-
-//     .missing {
-//       padding-top: 1.5rem;
-//       font-size: 1.3rem;
-//     }
-//   }
-// }
-
-// .skull {
-//   height: auto;
-//   width: 50vh;
-//   animation: scaleAndRotate 1s linear; /* Correct the typo here */
-//   animation-play-state: paused;
-//   animation-delay: inherit;
-// }
-
-// @keyframes animate {
-//   0% {
-//     width: 0;
-//   }
-//   30%,50%,70%,100% {
-//     width: 600%;
-//   }
-// }
-
-// @keyframes scrollAnimation {
-//   from {
-//     opacity: 0.5%;
-//   }
-//   to {
-//     opacity: 120%;
-//     scale: 1;
-//   }
-// }
 .placeholder-image {
   border-radius: 35px;
   margin-top: 20px;
@@ -131,8 +29,37 @@
   overflow: auto;
 }
 
+.singular-product:hover {
+  .img-hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .hidden-text {
+    transform: scale(1.1);
+    color: black;
+  }
+}
+
+  .img-hover {
+    transition: transform 0.15s ease-in-out; /* Add a default transition */
+  }
+
+  .clothing-title {
+    margin: 3px 0; /* Adjust margin as needed */
+    text-transform: uppercase;
+    // text-align: left; /* Align text to the left */
+    font-weight: 450;
+    font-size: 1.2em;
+  }
+
+  .hidden-text {
+    transition: scale 0.15s ease-in-out, 0.15s ease-in-out;
+    color: white;
+  }
+
+
 .skulls-container {
-  position: sticky;
+  // position: sticky;
   top: 0;
   display: flex;
   justify-content: center;
@@ -149,12 +76,12 @@
 }
 
 .skull {
-  margin-left: -200px;
+  margin-left: -20vh;
   animation-name: head;
 }
 
 .skull2 {
-  margin-right: -260px;
+  margin-right: -27vh;
   animation-name: jaw;
 }
 

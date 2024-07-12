@@ -76,10 +76,10 @@
           <div class="row row-cols-1 row-cols-md-3 g-4">
             @defer (when !!productsInformations) {
             <div class="col" *ngFor="let product of productsInformations">
-              <div class="p-3 rounded">
+              <div class="p-3 rounded singular-product">
                 <img (click)="this.setSelectedProduct(product)" routerLink="/product" src="{{ product.sync_product.thumbnail_url }}" class="img-fluid rounded img-hover"/>
-                <div class="p-3">
-                  <h5 class="card-title text-center m-3">{{ product.sync_product.name }}</h5>
+                <div class="p-3 hidden-text">
+                  <h5 class="clothing-title text-center m-3">{{ product.sync_product.name }}</h5>
                   <div class="d-flex justify-content-center">
                     <p>{{ product.sync_variants[0].retail_price + " " + product.sync_variants[0].currency }} </p>
                   </div>
