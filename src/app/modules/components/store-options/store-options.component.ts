@@ -10,6 +10,7 @@ import { Component} from '@angular/core';
 
 
 export class StoreOptionsComponent {
+  selectedOption: string; 
   colors = ['Red', 'Blue', 'Green', 'Yellow', 'Black', 'White'];
   sizes = ['Small', 'Medium', 'Large', 'XL'];
   selectedColor: string = '';
@@ -19,5 +20,13 @@ export class StoreOptionsComponent {
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  isSelectedOption(option: string): boolean {
+    return this.selectedOption === option;
+  }
+
+  setSelectedOption(option: string | null) {
+    this.selectedOption = option;
   }
 }

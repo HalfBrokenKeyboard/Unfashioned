@@ -5,3 +5,12 @@
   label {
     font-weight: bold;
   }
+
+  .optionText {
+    transition: 0.3s ease-in-out;
+    color: #7c7c7c;
+  }
+
+  .optionText:hover {
+    color: #000000;
+  }
